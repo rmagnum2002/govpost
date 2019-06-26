@@ -1,0 +1,16 @@
+.card.mb-3
+  .row.no-gutters
+    .col-md-4
+      = image_tag Faker::Placeholdit.image('250x250', 'jpg')
+    .col-md-8
+      .card-body
+        h5.card-title = @user.full_name
+        / p.card-text This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+        p.card-text
+          small.text-muted Account created at #{@user.created_at}
+
+        h5.card-title User listings (#{@user.listings.size})
+        - @user.listings.each do |listing|
+          p.card-text = link_to listing.name, listing
+
+        h5.card-title User posts (#{link_to @user.posts.size, root_path('search[user]': @user.id)})

@@ -1,0 +1,15 @@
+.card.mb-3
+  .row.no-gutters
+    .col-md-4
+      = image_tag Faker::Placeholdit.image('250x250', 'jpg')
+    .col-md-8
+      .card-body
+        h5.card-title Listing name: #{@listing.name}
+        / p.card-text This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+        p.card-text
+          small.text-muted Listing created at #{@listing.created_at}
+
+        h5.card-title Posts in listing (#{link_to @listing.posts.size, root_path('search[listing]': @listing.id)})
+        h5.card-title Users in listing (#{@listing.users.size})
+        - @listing.users.each do |user|
+          p.card-text = link_to user.full_name, user

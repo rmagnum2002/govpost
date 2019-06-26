@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    title GovPost
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light.sticky-top
+      = link_to 'GovPost', root_path, class: 'navbar-brand'
+      button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button"
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          / li.nav-item
+          /   = link_to 'Home', root_path, class: 'nav-link'
+        = form_tag root_path, class: 'form-inline my-2 my-lg-0', method: :get do
+          = select_tag 'search[listing]',
+            options_from_collection_for_select(Listing.all, 'id', 'name', params[:search]&.[](:listing)),
+            class: 'form-control mr-sm-2',
+            prompt: 'Listing'
+          = select_tag 'search[social_network]',
+            options_from_collection_for_select(SocialNetwork.all, 'id', 'name', params[:search]&.[](:social_network)),
+            class: 'form-control mr-sm-2',
+            prompt: 'Social Network'
+          = select_tag 'search[user]',
+            options_from_collection_for_select(User.all, 'id', 'full_name', params[:search]&.[](:user)),
+            class: 'form-control mr-sm-2',
+            prompt: 'Author'
+          = text_field_tag 'search[text]', params[:search]&.[](:text), class: 'form-control mr-sm-2', placeholder: 'Content or title', autocomplete: :off
+          = date_field_tag 'search[start_date]', params[:search]&.[](:start_date), class: 'form-control mr-sm-2', placeholder: 'Start date', autocomplete: :off
+          = date_field_tag 'search[end_date]', params[:search]&.[](:end_date), class: 'form-control mr-sm-2', placeholder: 'End date', autocomplete: :off
+          = submit_tag 'Search', class: 'btn btn-outline-success my-2 my-sm-0'
+    .container
+      = yield

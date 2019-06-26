@@ -1,0 +1,13 @@
+- if @size
+  .alert.alert-primary role="alert"
+    | Filters applied:
+    br
+    = applied_filters
+    br
+    | Posts found #{@size}
+.row
+  - @posts.each do |post|
+    .col-md-6.col-sm-12.col-xs-12
+      = render post
+
+= will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer

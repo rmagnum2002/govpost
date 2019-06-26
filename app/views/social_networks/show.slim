@@ -1,0 +1,12 @@
+.card.mb-3
+  .row.no-gutters
+    .col-md-4
+      = image_tag Faker::Placeholdit.image('250x250', 'jpg')
+    .col-md-8
+      .card-body
+        h5.card-title Social Network: #{@network.name}
+        / p.card-text This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+        p.card-text
+          small.text-muted Listing created at #{@network.created_at}
+
+        h5.card-title Posts from this network (#{link_to @network.posts.size, root_path('search[scoial_network]': @network.id)})

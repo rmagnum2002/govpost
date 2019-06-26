@@ -1,0 +1,92 @@
+AllCops:
+  TargetRubyVersion: 2.6
+  TargetRailsVersion: 3.2
+  Exclude:
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'fixtures/**/*'
+    - 'procfiles/**/*'
+    - 'public/**/*'
+    - 'vendor/**/*'
+
+Rails:
+  Enabled: true
+
+Metrics/ModuleLength:
+  Exclude:
+    - "**/*_spec.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    - '**/*_spec.rb'
+    - 'spec/**/*'
+    - 'engines/admin_web/lib/admin_web/admin/*.rb'
+
+AbcSize:
+  Enabled: false
+
+Layout/AlignHash:
+  EnforcedHashRocketStyle: key
+  EnforcedColonStyle: key
+
+AsciiComments:
+  Enabled: false
+
+CharacterLiteral:
+  Enabled: false
+
+ClassLength:
+  Enabled: false
+
+CollectionMethods:
+  Enabled: true
+
+CyclomaticComplexity:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+DotPosition:
+  EnforcedStyle: trailing
+
+DoubleNegation:
+  Enabled: false
+
+FormatString:
+  Enabled: true
+  EnforcedStyle: sprintf
+
+LineLength:
+  Max: 120
+
+MethodLength:
+  Enabled: false
+
+SingleLineMethods:
+  Enabled: false
+
+NumericPredicate:
+  EnforcedStyle: comparison
+
+# TODO: Enable on Rails 4.x
+Rails/DynamicFindBy:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
+
+Style/CommandLiteral:
+  EnforcedStyle: percent_x
+
+# Codeclimate's Cognitive Complexity analyzer is better
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Rails/ActiveRecordAliases:
+  Description: >-
+                  Avoid Active Record aliases:
+                  Use `update` instead of `update_attributes`.
+                  Use `update!` instead of `update_attributes!`.
+  Enabled: false
+  VersionAdded: '0.53'
