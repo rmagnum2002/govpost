@@ -25,7 +25,7 @@ describe PostFilterService do
     end
 
     context 'with social_network param present' do
-      subject(:service) { PostFilterService.new(network_id: net2.id) }
+      subject(:service) { PostFilterService.new(social_network: net2.id) }
 
       it 'should return filtered posts by social_network' do
         result = service.call
@@ -35,7 +35,7 @@ describe PostFilterService do
     end
 
     context 'with user_id param present' do
-      subject(:service) { PostFilterService.new(user_id: user4.id) }
+      subject(:service) { PostFilterService.new(user: user4.id) }
 
       it 'should return filtered posts by user_id' do
         result = service.call
